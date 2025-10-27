@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./python-backend
+    env_file:
+      - python-backend/.env.example
+    environment:
+      - WEB_APP_ORIGIN=http://localhost:3000
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./web-app
+    env_file:
+      - web-app/.env.example
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://backend:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
