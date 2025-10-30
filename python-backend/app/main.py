@@ -9,7 +9,7 @@ from app.background import prefetcher
 from app.db import init_db
 from app.logging_conf import configure_logging, get_logger
 from app.models import HealthResponse
-from app.routers import repurpose, workspace, ml, multimodal, knowledge_graph, enhanced_ml, explainability, neo4j_graph
+from app.routers import repurpose, workspace, ml, multimodal, knowledge_graph, enhanced_ml, explainability, neo4j_graph, biomedical
 from app.telemetry import setup_telemetry
 
 configure_logging()
@@ -49,6 +49,7 @@ app.include_router(knowledge_graph.router)
 app.include_router(enhanced_ml.router)
 app.include_router(explainability.router)
 app.include_router(neo4j_graph.router)
+app.include_router(biomedical.router)
 
 
 @app.on_event("startup")
